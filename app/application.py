@@ -4,7 +4,7 @@ import numpy as np
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-MODEL_PATH = os.path.join('app', 'engine', 'saved_models', 'iris', 'model.pkl')
+MODEL_PATH = os.path.join('engine', 'saved_models', 'iris', 'model.pkl')
 
 model = pickle.load(open(MODEL_PATH, 'rb'))
 
@@ -22,3 +22,7 @@ def predict():
   output = prediction[0]
 
   return jsonify({'prediction': output})
+
+
+if __name__ == '__main__':
+  app.run(debug=True, host='0.0.0.0')
