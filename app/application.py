@@ -10,8 +10,13 @@ model = pickle.load(open(MODEL_PATH, 'rb'))
 
 @app.route('/predict', methods=['POST'])
 def predict():
-  int_features = [float(x) for x in request.form.values()]
-  np_features = [np.array(int_features)]
+  features = request.json
+  np_features = [
+                  np.array([features['sepal_lenght'],
+                  features['sepal_width'],
+                  features['petal_length'],
+                  features['petal_width']])
+                ]
 
   prediction = model.predict(np_features)
   output = prediction[0]

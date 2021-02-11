@@ -39,7 +39,14 @@ rode o comando
 #### CURL
 
 ```
- curl -X POST -F 'sepal_lenght=0.5' -F 'sepal_width=0.2' -F 'petal_length=0.5' -F 'petal_width=0.4' http://127.0.0.1:5000/predict
+curl --location --request POST 'http://127.0.0.1:5000/predict?Content-Type=application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "sepal_lenght":0.5,
+    "sepal_width": 0.2,
+    "petal_length": 0.5,
+    "petal_width": 0.4
+}'
 ```
 
 Resultado esperado
